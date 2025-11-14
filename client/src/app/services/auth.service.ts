@@ -8,17 +8,18 @@ import { environment } from '../../environment/environment';
 })
 export class AuthService {
 
-  private API_URL = environment.authUrl;
+  private API_URL = environment.loginUrl;
+  private api = environment.registerUrl;
 
   constructor(private http:HttpClient) { }
 
 
 register(data:any):Observable<any>{
-  return this.http.post(`${this.API_URL}/register`, data)
+  return this.http.post(`${this.api}`, data)
 }
 
 login(data:any):Observable<any>{
-  return this.http.post(`${this.API_URL}/login`,data)
+  return this.http.post(`${this.API_URL}`,data)
 }
 
 

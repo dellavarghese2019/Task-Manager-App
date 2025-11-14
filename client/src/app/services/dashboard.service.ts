@@ -11,6 +11,6 @@ export class DashboardService {
   constructor(private http:HttpClient) { }
 
   getStats(){
-   return this.http.get(`${this.api}/stats`)
+   return this.http.get(`${this.api}`)
   }
 }

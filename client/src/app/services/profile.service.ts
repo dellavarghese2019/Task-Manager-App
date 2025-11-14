@@ -8,13 +8,14 @@ import { environment } from '../../environment/environment';
 export class ProfileService {
   
   private api = environment.profileUrl
+  private API = environment.profileUpdate;
   constructor(private http:HttpClient) { }
 
   getProfile(){
-    return this.http.get(`${this.api}/me`);
+    return this.http.get(`${this.api}`);
   }
 
   updateProfile(data:any){
-    return this.http.put(`${this.api}/update`, data);
+    return this.http.put(`${this.API}`, data);
   }
 }

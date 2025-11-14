@@ -12,6 +12,6 @@ export class ResetService {
   constructor(private http:HttpClient) { }
 
   resetPass(data:any):Observable<any>{
-    return this.http.post(`${this.api}/reset-password`, data)
+    return this.http.post(`${this.api}`, data)
   }
 }

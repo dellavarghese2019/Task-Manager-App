@@ -14,7 +14,7 @@ export class ForgotService {
 
 
   forgot(data:any):Observable<any>{
-    return this.http.post(`${this.api}/forgot-password`,data)
+    return this.http.post(`${this.api}`,data)
   }
 
 }
