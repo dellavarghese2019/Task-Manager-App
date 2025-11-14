@@ -1,0 +1,32 @@
+.reset-container {
+  background: linear-gradient(135deg, #00b09b, #96c93d);
+}
+
+.reset-card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  background-color: #ffffff;
+}
+
+.reset-card input:focus {
+  box-shadow: 0 0 5px rgba(0, 176, 155, 0.8);
+  border-color: #00b09b;
+}
+
+.btn-success {
+  background-color: #00b09b;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-success:hover {
+  background-color: #019880;
+}
+
+@media (max-width: 576px) {
+  .reset-card {
+    margin: 20px;
+    padding: 20px;
+  }
+}

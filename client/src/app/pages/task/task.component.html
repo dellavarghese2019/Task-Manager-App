@@ -1,0 +1,102 @@
+<section class="page-container">
+
+  <header class="page-header">
+    <h1>Tasks</h1>
+    <div class="header-actions">
+      <span class="user-info">Welcome, {{ getUsername() }}</span>
+    </div>
+  </header>
+
+  <!-- CREATE TASK CARD -->
+  <div class="card create-card">
+    <div class="card-body form-grid">
+      <input
+        type="text"
+        placeholder="Title"
+        [(ngModel)]="newTask.title"
+        name="newTitle"
+        [disabled]="isSaving"
+        maxlength="100"
+      />
+
+      <input
+        type="text"
+        placeholder="Short description"
+        [(ngModel)]="newTask.description"
+        name="newDescr"
+        [disabled]="isSaving"
+        maxlength="250"
+      />
+
+      <select [(ngModel)]="newTask.status" name="newStatus" [disabled]="isSaving">
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+      </select>
+
+      <button class="btn primary" (click)="addTask()" [disabled]="isSaving">
+        {{ isSaving ? 'Saving...' : 'Add Task' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div *ngIf="isLoading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading tasks...</p>
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div *ngIf="isEmpty" class="empty-state">
+    <div class="empty-illustration"></div>
+    <h3>No tasks yet</h3>
+    <p>Add your first task using the form above.</p>
+  </div>
+
+  <!-- TASK LIST (GRID) -->
+  <div class="tasks-grid" *ngIf="!isLoading && tasks.length > 0">
+    <div class="task-card" *ngFor="let t of tasks">
+      <!-- VIEW MODE -->
+      <div *ngIf="editTaskId !== t._id" class="task-view">
+        <div class="task-row">
+          <div class="task-title">{{ t.title }}</div>
+
+          <div class="task-actions">
+            <button class="icon-btn" (click)="toggleStatus(t)">
+              {{ t.status === 'pending' ? 'Mark Completed' : 'Mark Pending' }}
+            </button>
+
+            <button class="icon-btn" (click)="enableEdit(t)">Edit</button>
+            <button class="icon-btn danger" (click)="deleteTask(t._id)">Delete</button>
+          </div>
+        </div>
+
+        <div class="task-desc">{{ t.description }}</div>
+
+        <div class="task-meta">
+          <span class="badge" [ngClass]="{'pending-badge': t.status==='pending','completed-badge': t.status==='completed'}">
+            {{ t.status }}
+          </span>
+        </div>
+      </div>
+
+      <!-- EDIT MODE -->
+      <div *ngIf="editTaskId === t._id" class="task-edit">
+        <input type="text" [(ngModel)]="editData.title" placeholder="Title" />
+        <input type="text" [(ngModel)]="editData.description" placeholder="Description" />
+
+        <select [(ngModel)]="editData.status">
+          <option value="pending">Pending</option>
+          <option value="completed">Completed</option>
+        </select>
+
+        <div class="edit-actions">
+          <button class="btn primary" (click)="updateTask(t._id)" [disabled]="isUpdating">
+            {{ isUpdating ? 'Updating...' : 'Save' }}
+          </button>
+          <button class="btn" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

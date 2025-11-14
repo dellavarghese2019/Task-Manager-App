@@ -1,0 +1,49 @@
+<div class="reset-container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4 reset-card">
+    <h2 class="text-center mb-4 text-success fw-bold">Reset Password</h2>
+
+    <form (ngSubmit)="resetPassword()">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="Email"
+          readonly
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">OTP</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="otp"
+          name="otp"
+          placeholder="Enter OTP"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">New Password</label>
+        <input
+          type="password"
+          class="form-control"
+          [(ngModel)]="newPassword"
+          name="newPassword"
+          placeholder="Enter new password"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Reset Password</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <a routerLink="/login" class="text-decoration-none small text-muted">Back to Login</a>
+    </div>
+  </div>
+</div>

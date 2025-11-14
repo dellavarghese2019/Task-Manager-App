@@ -1,0 +1,32 @@
+.forgot-container {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+.forgot-card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  background-color: #ffffff;
+}
+
+.forgot-card input:focus {
+  box-shadow: 0 0 5px rgba(37, 117, 252, 0.8);
+  border-color: #2575fc;
+}
+
+.btn-primary {
+  background-color: #2575fc;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #1b5ed7;
+}
+
+@media (max-width: 576px) {
+  .forgot-card {
+    margin: 20px;
+    padding: 20px;
+  }
+}
