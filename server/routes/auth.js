@@ -72,35 +72,35 @@ router.post('/forgot-password', async (req,res)=>{
     try{
         const {email} = req.body;
         const user = await User.findOne({email});
-        console.log("✅ User found:", user ? user.email : "no user");
+        console.log(" User found:", user ? user.email : "no user");
 
 
         if(!user){
-          console.log("❌ No account found");
+          console.log(" No account found");
           return  res.status(400).json({message:"No account found"})
         }
 
         
 
             const otp = Math.floor(100000 + Math.random() * 900000).toString();
-             console.log("🔢 OTP generated:", otp);
+             console.log(" OTP generated:", otp);
 
    
     user.otp = otp;
     user.otpExpiry = Date.now() + 5 * 60 * 1000;
 
     await user.save();
-    console.log("✅ OTP saved to database");
-
-   
-   
+    console.log(" OTP saved to database");
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL,
         pass: process.env.EMAIL_PASSWORD
+        
+
       }
+
     });
 
     await transporter.sendMail({

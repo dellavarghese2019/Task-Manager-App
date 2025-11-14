@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ResetService } from '../../services/reset.service';
 
 @Component({
   selector: 'app-reset',
@@ -23,11 +24,11 @@ export class ResetComponent implements OnInit {
     }
   }
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private reset:ResetService, private router: Router) {}
  
 
  resetPassword() {
-    this.http.post('http://localhost:5000/api/auth/reset-password', {
+    this.reset.resetPass({
       email: this.email,
       otp: this.otp,
       newPassword: this.newPassword

@@ -3,5 +3,7 @@ export const environment = {
   authUrl: 'http://localhost:5000/api/auth',
   dashboardUrl:'http://localhost:5000/api/dashboard',
   taskUrl:'http://localhost:5000/api/tasks' ,
-  profileUrl:'http://localhost:5000/api/profile'
+  profileUrl:'http://localhost:5000/api/profile',
+  forgotApi:'http://localhost:5000/api/auth',
+  resetApi:'http://localhost:5000/api/auth'
 };
